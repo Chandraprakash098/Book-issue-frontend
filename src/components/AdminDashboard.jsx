@@ -266,6 +266,13 @@ const Container = styled.div`
   width: 100%;
 `;
 
+const ActionsWrapper = styled.div`
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+`;
+
 const PageHeader = styled.h1`
   font-size: 2rem;
   font-weight: 700;
@@ -434,25 +441,56 @@ const Td = styled.td`
   vertical-align: top;
 `;
 
+// const ActionButton = styled.button`
+//   background: ${props => props.$approve ? '#38a169' : '#e53e3e'};
+//   color: white;
+//   border: none;
+//   border-radius: 4px;
+//   padding: 0.5rem 0.75rem;
+//   font-size: 0.875rem;
+//   font-weight: 600;
+//   cursor: pointer;
+//   margin-right: 0.5rem;
+//   display: inline-flex;
+//   align-items: center;
+//   gap: 0.25rem;
+//   transition: background 0.2s;
+  
+//   &:hover {
+//     background: ${props => props.$approve ? '#2f855a' : '#c53030'};
+//   }
+// `;
+
 const ActionButton = styled.button`
   background: ${props => props.$approve ? '#38a169' : '#e53e3e'};
-  color: white;
+  color: #fff;
   border: none;
-  border-radius: 4px;
-  padding: 0.5rem 0.75rem;
-  font-size: 0.875rem;
+  border-radius: 6px;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  margin-right: 0.5rem;
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 0.25rem;
-  transition: background 0.2s;
-  
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: 0 2px 8px rgba(49, 130, 206, 0.08);
+  transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+  width: 120px;  /* Fixed width for uniform size */
+  height: 40px;  /* Fixed height for uniform size */
+
   &:hover {
     background: ${props => props.$approve ? '#2f855a' : '#c53030'};
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 4px 16px rgba(49, 130, 206, 0.12);
+  }
+
+  &:active {
+    transform: scale(0.98);
   }
 `;
+
+
 
 const EmptyState = styled.div`
   text-align: center;
@@ -725,12 +763,14 @@ const AdminDashboard = ({ showNotification }) => {
                       </a>
                     </Td>
                     <Td>
+                       <ActionsWrapper>
                       <ActionButton $approve onClick={() => handleAction(student._id, 'approve')}>
                         <i className="fas fa-check"></i> Approve
                       </ActionButton>
                       <ActionButton onClick={() => handleAction(student._id, 'reject')}>
                         <i className="fas fa-times"></i> Reject
                       </ActionButton>
+                      </ActionsWrapper>
                     </Td>
                   </Tr>
                 ))}
