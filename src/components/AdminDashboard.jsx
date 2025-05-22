@@ -326,8 +326,9 @@ const CardTitle = styled.h3`
 const StatsRow = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 0.5rem 0;
+  padding: 2rem 0;
   border-bottom: 1px solid #edf2f7;
+  font-size: 1.3rem;
   
   &:last-child {
     border-bottom: none;
@@ -681,14 +682,14 @@ const AdminDashboard = ({ showNotification }) => {
               <StatLabel>Pending Requests:</StatLabel>
               <StatValue>{requests.length}</StatValue>
             </StatsRow>
-            <StatsRow>
+            {/* <StatsRow>
               <StatLabel>Total Students:</StatLabel>
               <StatValue>-</StatValue>
             </StatsRow>
             <StatsRow>
               <StatLabel>Books Issued:</StatLabel>
               <StatValue>-</StatValue>
-            </StatsRow>
+            </StatsRow> */}
           </Card>
         </Grid>
 
